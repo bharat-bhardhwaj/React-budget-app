@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Fragment } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import Header from './components/Header/Header'
+import Chart from './components/Chart/Chart'
+import Budget from './components/Budget/Budget'
+import ListOfBills from './components/Table/ListofBills'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <Header />
+      <Container bg="dark" fluid style={{ marginTop: '2rem'
+     }}>
+        <Row style={{marginBottom:'2rem'}}>
+          <Col sm={8}>
+            <Chart />
+          </Col>
+          <Col>
+            <Budget />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <ListOfBills />
+          </Col>
+        </Row>
+      </Container>
+    </Fragment>
+  )
 }
 
-export default App;
+export default App
