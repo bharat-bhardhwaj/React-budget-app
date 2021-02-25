@@ -1,9 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useState } from 'react';
 import {useSelector} from 'react-redux';
 import ListItems from './ListItems';
 import Search from '../Search/Search';
+import {Button} from 'react-bootstrap';
+import AddBills from '../Modal/AddBills';
 
 const ListOfBills = () => {
+  const [ modalShow,setModalShow] = useState(false)
   const listData =useSelector((state) => state.listDataReducer.bills)
   console.log(listData)
   return (
@@ -27,6 +30,8 @@ const ListOfBills = () => {
         }}
       >
         <Search />
+        <Button onClick={()=> setModalShow(true)}>Add Bills</Button>
+        <AddBills show={modalShow} onHide={()=> setModalShow(false)}/>
     </div>
 
     {

@@ -30,7 +30,7 @@ const ListItems = ({id,description,category,amount,date}) => {
         <Button variant='danger'>Remove</Button>
       </ButtonGroup>
 
-      <EditBills show={modalShow} onHide={() => setModalShow(false)}/>
+      <EditBills show={modalShow} onHide={() => setModalShow(false)} amount={amount} category={category} description={description} id={id}/>
     </Card>
 
   

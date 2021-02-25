@@ -1,32 +1,32 @@
-import React from 'react'
-import { Modal, Button, Form } from 'react-bootstrap'
+import React, { Fragment } from 'react';
+import {Modal,Form,Button} from 'react-bootstrap'
 
-const EditBills = ({ show, onHide, amount, category, description}) => {
-  return (
-    <Modal
-      show={show}
-      onHide={onHide}
+const AddBills = (props) => {
+    return (
+        <Fragment>
+              <Modal
+      {...props}
       size='lg'
       aria-labelledby='contained-modal-title-vcenter'
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>Edit Bills</Modal.Title>
+        <Modal.Title id='contained-modal-title-vcenter'>Add Bills</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group controlId='formBasicEmail'>
             <Form.Label>Description</Form.Label>
-            <Form.Control type='text' placeholder='Enter Description' value={description} />
+            <Form.Control type='text' placeholder='Enter Description' />
           </Form.Group>
 
           <Form.Group controlId='formBasicPassword'>
             <Form.Label>Category</Form.Label>
-            <Form.Control type='text' placeholder='Category' value={category} />
+            <Form.Control type='text' placeholder='Category' />
           </Form.Group>
           <Form.Group controlId='formBasicPassword'>
             <Form.Label>Amount</Form.Label>
-            <Form.Control type='text' placeholder='Amount' value={amount}/>
+            <Form.Control type='text' placeholder='Amount' />
           </Form.Group>
           <Form.Group controlId='dob'>
             <Form.Label>Select Date</Form.Label>
@@ -39,10 +39,11 @@ const EditBills = ({ show, onHide, amount, category, description}) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
+        <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
-  )
+        </Fragment>
+    )
 }
 
-export default EditBills
+export default AddBills
