@@ -1,7 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Card, ButtonGroup, Button } from 'react-bootstrap'
+import  EditBills  from '../Modal/EditBills';
 
-const ListItems = () => {
+const ListItems = ({id,description,category,amount,date}) => {
+
+  const [ modalShow,setModalShow] = useState(false)
   return (
     <Card
       as='div'
@@ -10,21 +13,27 @@ const ListItems = () => {
         fontSize: '2rem',
         borderRadius: '1rem',
         minHeight: '7rem',
+        marginBottom:'1rem'
       }}
     >
-      <div>1</div>
+      <div>{id}</div>
 
-      <div>Dominoes</div>
-      <div>FoodDining</div>
+      <div>{description}</div>
+      <div>{category}</div>
 
-      <div>567</div>
-      <div>01-02-2020</div>
+      <div>{amount}</div>
+      <div>{date}</div>
       <ButtonGroup size='lg'>
-        <Button variant='primary'>Edit</Button>
-        <Button variant='success'>Add</Button>
+        <Button variant='primary'
+        onClick={()=> setModalShow(true)}
+        >Edit</Button>
         <Button variant='danger'>Remove</Button>
       </ButtonGroup>
+
+      <EditBills show={modalShow} onHide={() => setModalShow(false)}/>
     </Card>
+
+  
   )
 }
 

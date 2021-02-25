@@ -1,7 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from 'react';
+import {useSelector} from 'react-redux';
 import ListItems from './ListItems';
-import Search from '../Search/Search'
+import Search from '../Search/Search';
+
 const ListOfBills = () => {
+  const listData =useSelector((state) => state.listDataReducer.bills)
+  console.log(listData)
   return (
     <Fragment>
       <h1
@@ -25,7 +29,15 @@ const ListOfBills = () => {
         <Search />
     </div>
 
-    <ListItems/>
+    {
+      listData?.map(({id,...otherProps}) => {
+        return (
+          <ListItems key={id} {...otherProps} id={id} />
+        )
+      })
+    }
+
+ 
     </Fragment>
   )
 }
